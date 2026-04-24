@@ -1,0 +1,22 @@
+
+
+.layout-container{
+    /* background-color:rgb(237, 169, 169);     */
+}
+.layout-subcontainer{
+    display:flex;
+}
+.sidebar-layout{
+    width:17%;
+    height:100vh;
+    position:fixed;
+    border: 1px solid black;
+    z-index:1;
+    
+}
+.outlet-style{
+    border:1px solid blue;
+    flex-grow:1;
+    margin-left:17%;
+    /* height:100vh; */
+}

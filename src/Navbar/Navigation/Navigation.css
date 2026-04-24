@@ -1,0 +1,44 @@
+.navlinks-main-container{
+    display:flex;
+    box-sizing: border-box;
+    /* gap: 0 6px; */
+    gap: 0 30px;
+    /* border: 1px solid black; */
+}
+.navlink{
+     /* margin: 0 10px; */
+     font-size: 1.3vw;
+    text-decoration:none;
+   
+}
+
+@media(max-width: 800px){
+    .navlinks-main-container{
+        gap: 0 20px;
+        /* background-color:yellowgreen; */
+    }
+    .navlink{
+        font-size: 2vw;
+    }
+}
+
+@media (max-width:500px){
+    .navlinks-main-container{
+        gap: 0 16px;
+        background-color: red;
+        
+    }
+    .navlink{
+      color:white;
+      font-size: 12px;
+    }
+}
+@media (max-width:330px){
+    .navlinks-main-container{
+        gap: 0 6px;
+        background-color: green;
+    }
+    .navlink{
+        font-size: 4vw;
+    }
+}

@@ -1,0 +1,12 @@
+.college-bags-container{
+    /* display:flex; */
+    display: grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap: 2.5rem;
+    padding: 2.5rem;
+}
+.college-bags-container section{
+    /* border: 1px solid black; */
+    
+    /* padding:2rem; */
+}

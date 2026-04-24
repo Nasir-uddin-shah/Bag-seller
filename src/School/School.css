@@ -1,0 +1,42 @@
+.school-main-container{
+  
+    display: flex;
+    justify-content: flex-end;
+    box-sizing:border-box;
+}
+
+.sidebar-style{
+    /* border: 1px solid blue; */
+    width: 1px;
+    height: 100vh;
+    box-shadow: 1px 1px 1px 1px ;
+    position:fixed;
+    transition: width 1s ease-in;
+    z-index: 1;
+}
+  .sidebar-style:hover .arrow-style{
+   display:block;
+   
+}
+.sidebar-content{
+    display:none;
+}
+.bags-list-style{
+    /* border: 1px solid red; */
+    /* width: calc(100vw - 17%); */
+    font-size: 1.5vw;
+    width: 100vw;
+    transition: width 1s ease-in;
+    
+}
+.arrow-style{
+   position: absolute;
+   display:none;
+   margin-left: 100%;
+   z-index: 999;
+   border-radius: 50%;
+   border: 0;
+   padding: 0;
+   background-color:rgb(210, 210, 252,0.6);
+   top: 50%;
+}
