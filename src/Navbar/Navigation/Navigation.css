@@ -11,6 +11,17 @@
     text-decoration:none;
    
 }
+.shoppingcart{
+    /* border: 1px solid black; */
+    position: relative;
+}
+.shoppingcart-icon{
+    position:absolute;
+    bottom: 70%;
+    left: 30%;
+    font-size: 11px;
+    font-weight:bold;
+}
 
 @media(max-width: 800px){
     .navlinks-main-container{

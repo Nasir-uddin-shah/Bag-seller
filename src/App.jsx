@@ -11,6 +11,7 @@ import './App.css'
 import Layout from './layout/Layout';
 import Cart from './components/cart/Cart';
 import University from './pages/university/University';
+import CheckOut from './checkout/CheckOut';
 // import './App.css'
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path='/school' element={<School />} />
           <Route path='/college' element={<CollegeBags />} />
           <Route path="university" element={<University />} />
+          <Route path='/checkout' element={<CheckOut />} />
           <Route path='/cart' element={<Cart />} />
        </Route>
        

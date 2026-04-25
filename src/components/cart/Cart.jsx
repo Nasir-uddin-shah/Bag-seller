@@ -5,7 +5,7 @@ import { CartContext } from '../../contextApis/CartContext';
 import './cart.css';
 function Cart(){
     const {cartItems, dispatch, total} = useContext(CartContext);
-    console.log("what is inisde cartItems: ", cartItems)
+    const navigate = useNavigate()
     return(
        <main> 
             <div>
@@ -29,7 +29,9 @@ function Cart(){
             </div>
 
             <div>
-                checkout
+                <button
+                onClick={()=>navigate('/checkout')}
+                >Check out</button>
             </div>
       </main>
     )
