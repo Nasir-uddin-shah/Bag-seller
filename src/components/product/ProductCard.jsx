@@ -1,13 +1,39 @@
 import {useState} from 'react'
+import {useNavigate} from 'react-router-dom';
+import { useContext } from 'react';
+import { CartContext } from '../../contextApis/CartContext';
 import { Favorite, ShoppingCart, Stars} from '../icons/Icons'
 import './product-card-style.css'
+import Modal from '../modal/Modal';
 
 function ProductCard({bag}){
-    
-    const [rating, setRating] = useState(0)
+    const {cartItems} = useContext(CartContext);
+     const navigate = useNavigate();
+    const [rating, setRating] = useState(0);
+    const [showModal, setShowModal] = useState();
+    const [productExistInCart, setProductExistInCart] = useState();
     const handleReview =(stars)=>{    
      setRating(stars)   
+    }
 
+    const handleBuy = ()=>{
+      if(cartItems.length > 0){
+        setShowModal(true)
+      }else{
+        navigate('/checkout',{state:{bag}})
+      }
+    }
+
+    const confirmBoth = (product)=>{
+          console.log('yes confirm both')
+          const existInCart = cartItems.some(item => item.id === product.id);
+          if(existInCart){
+            setProductExistInCart(true)
+          }
+          else{
+            
+            navigate("/checkout",{state:{cartItems}})
+          }
     }
     
     return(
@@ -44,7 +70,26 @@ function ProductCard({bag}){
                             }
                            
                         </div>
-                </div>             
+                </div>      
+                <button onClick={()=>handleBuy()}>Order</button>  
+                <div>{
+                    showModal && (
+                        <Modal
+                        onConfirmSingle={()=>navigate('/checkout',{state:{bag}})}
+                        onComfirmBoth={()=>confirmBoth(bag)}
+                        />
+                    )
+                    }</div>     
+                    <div>
+                        {
+                            productExistInCart && (
+                                <>
+                                <div>product already exist in cart</div>
+                                <button onClick={()=>navigate('/cart')}>go to cart</button>
+                                </>
+                            )
+                        }
+                    </div>
             </section>            
         </main>
     )

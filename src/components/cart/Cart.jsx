@@ -30,7 +30,7 @@ function Cart(){
 
             <div>
                 <button
-                onClick={()=>navigate('/checkout')}
+                onClick={()=>navigate('/checkout', {state:{cartItems}})}
                 >Check out</button>
             </div>
       </main>

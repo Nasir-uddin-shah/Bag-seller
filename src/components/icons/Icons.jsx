@@ -1,8 +1,5 @@
 import {useContext} from 'react';
-
-
 import {useState} from 'react';
-
 import { FaSearch,FaShoppingCart, FaHeart } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import { CartContext } from '../../contextApis/CartContext';
@@ -10,10 +7,7 @@ import { CartContext } from '../../contextApis/CartContext';
 
 export function ShoppingCart({bag}){  
      
-    const {cartItems, dispatch, total, isInCart} = useContext(CartContext);
-  
-   
-    
+    const {cartItems, dispatch, total, isInCart} = useContext(CartContext);    
     return(
         <div>
             <FaShoppingCart

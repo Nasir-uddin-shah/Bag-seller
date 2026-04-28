@@ -1,0 +1,28 @@
+.checkout-main-style{
+    width: 50%;
+    margin:auto;
+}
+.checkout-form-style{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.checkout-form-input{
+    font-size: 16px;
+    padding: .3rem;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid #ccc;
+  border-top: 3px solid black;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
