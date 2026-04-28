@@ -1,3 +1,5 @@
+import './modal.css';
+
 export default function Modal({
     title, message, onConfirmCart, onConfirmSingle, onComfirmBoth, onClose
 }){

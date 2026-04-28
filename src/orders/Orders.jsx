@@ -1,7 +1,7 @@
 function Orders(){
     return(
         <main>
-            <button>Order</button>
+            <button>Order details</button>
         </main>
     )
 }

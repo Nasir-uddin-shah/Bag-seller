@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../contextApis/CartContext';
 import './checkout.css'
 import { useLocation } from 'react-router-dom';
@@ -7,14 +7,44 @@ import { useLocation } from 'react-router-dom';
 function CheckOut(){
     const {cartItems,total} = useContext(CartContext);
     const {state} = useLocation();
-   const [checkOutItems, setCheckOutItems] = useState();
-  // const {state:{cartItems}}=useLocation();
+    const from = state?.from;
+   const [checkOutItems, setCheckOutItems] = useState([]);
+   const [grandTotal, setGrandTotal] = useState([]);
+   const [grandTotalQuantity, setGrandTotalQuantity] = useState(0);
+   
+  // const {state:{cartItems}}=useLocation();    
+    // const cartProducts = state?.cartItems
+    // const singleOrderItem = [state?.bag]
+       console.log('form: ', from)
+       console.log("cart values: ", state)
+    useEffect(()=>{
+      let item = [];
+      switch(from){
+      case 'cart':
+            item = state.cartItems;
+            break;
+      case 'both':
+           item = [...cartItems, state.bag];
+           break;
+       case 'single':
+           item = [{...state.bag, quantity:1}];     
+           break;
+       default:  
+          item= []      
+    } 
+      setCheckOutItems(item.filter(item => item?.price !== undefined));
+    },[cartItems,state,from])
     
-    const cartProducts = state?.cartItems
-    const singleOrderItem = [state?.bag]
-
-    
-    // const cartCheckOutItems = cartItems;
+    useEffect(()=>{
+      const total = checkOutItems.reduce((sum, item)=>{
+        return (sum + (parseInt(item?.subtotal) || 0))
+      },0);
+      const totalquantity = checkOutItems.reduce((sum,item)=>{
+        return (sum + parseInt(item?.quantity)|| 0)
+      },0)
+      setGrandTotal(total);
+      setGrandTotalQuantity(totalquantity);
+    },[checkOutItems])
     return(
         <main className="checkout-main-style">
           {/* <div className="spinner"></div> */}
@@ -35,8 +65,8 @@ function CheckOut(){
                     <option>COD</option>
                   </select>
             </form>
-             {/* <p>you have total of {items.length}</p>
-            <p>total: </p> */}
+             <p>you have total of {grandTotalQuantity}</p>
+            <p>Grand total:{grandTotal} </p>
             <div className='checkout-date-time-style'>
                <p>{
                   new Date().toLocaleDateString()
@@ -44,7 +74,7 @@ function CheckOut(){
                 }</p>
                 <p>{new Date().toLocaleTimeString()}</p>
               </div>
-
+             <button >Order</button>
         </main>
     )
 }

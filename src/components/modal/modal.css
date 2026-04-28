@@ -1,0 +1,29 @@
+.overlay{
+position: relative;
+
+}
+.modal{
+  position: absolute;
+  border: 1px solid black;
+  display:flex;
+  flex-direction:column;
+  left: 10%;
+  gap: .3rem;
+  padding: .2rem;
+  align-items: center;
+  
+}
+.modal button{
+    width: 100%;
+    border:none;
+    background-color: white;
+    font-size: 12px;
+    padding:.2rem;
+    border-radius: 5px;
+    
+    
+}
+.modal button:hover{
+    background-color: rgb(165, 203, 237);
+    visibility:visible;
+}

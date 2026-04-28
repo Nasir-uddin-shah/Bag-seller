@@ -22,15 +22,16 @@ function Cart(){
                     <div>
                     <p>quatity:{product.quantity}</p>
                     {<button onClick={()=>dispatch({type:'INCREASE', payload:product.id})}>+</button>}
+                    
                     </div>
                 </main>
             )}
-            <p>total: {total}</p>
+            <p>Grand total: {total}</p>
             </div>
 
             <div>
                 <button
-                onClick={()=>navigate('/checkout', {state:{cartItems}})}
+                onClick={()=>navigate('/checkout', {state:{cartItems,from:'cart'}})}
                 >Check out</button>
             </div>
       </main>

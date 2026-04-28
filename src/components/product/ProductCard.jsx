@@ -16,11 +16,16 @@ function ProductCard({bag}){
      setRating(stars)   
     }
 
+    const hideModal = ()=>{
+        setShowModal(false);
+    }
+
     const handleBuy = ()=>{
       if(cartItems.length > 0){
         setShowModal(true)
+        setProductExistInCart(false);
       }else{
-        navigate('/checkout',{state:{bag}})
+        navigate('/checkout',{state:{bag, from:'single'}})
       }
     }
 
@@ -28,12 +33,17 @@ function ProductCard({bag}){
           console.log('yes confirm both')
           const existInCart = cartItems.some(item => item.id === product.id);
           if(existInCart){
-            setProductExistInCart(true)
+            setProductExistInCart(true);
+            setShowModal(false)
           }
           else{
             
-            navigate("/checkout",{state:{cartItems}})
+            navigate("/checkout",{state:{bag,from:'both'}})
           }
+    }
+
+    const confirmCart = ()=>{
+        navigate("/checkout",{state:{cartItems, from:'cart'}})
     }
     
     return(
@@ -71,12 +81,15 @@ function ProductCard({bag}){
                            
                         </div>
                 </div>      
-                <button onClick={()=>handleBuy()}>Order</button>  
+                <button onClick={()=>handleBuy()}>Buy Now</button>  
                 <div>{
                     showModal && (
                         <Modal
-                        onConfirmSingle={()=>navigate('/checkout',{state:{bag}})}
+                        onConfirmSingle={()=>navigate('/checkout',{state:{bag, from:'single'}})}
                         onComfirmBoth={()=>confirmBoth(bag)}
+                        onConfirmCart={()=>confirmCart()}
+                       
+                        onClose={()=>hideModal()}
                         />
                     )
                     }</div>     
