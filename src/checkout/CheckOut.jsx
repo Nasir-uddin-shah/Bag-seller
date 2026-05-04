@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../contextApis/CartContext';
+import { CheckOutContext } from '../contextApis/checkoutContext';
 import './checkout.css'
 import { useLocation } from 'react-router-dom';
 
 
 function CheckOut(){
     const {cartItems,total} = useContext(CartContext);
+    const {dispatch}= useContext(CheckOutContext)
     const {state} = useLocation();
     const from = state?.from;
    const [checkOutItems, setCheckOutItems] = useState([]);
@@ -15,8 +17,7 @@ function CheckOut(){
   // const {state:{cartItems}}=useLocation();    
     // const cartProducts = state?.cartItems
     // const singleOrderItem = [state?.bag]
-       console.log('form: ', from)
-       console.log("cart values: ", state)
+       console.log("check out times: ", checkOutItems);
     useEffect(()=>{
       let item = [];
       switch(from){
@@ -74,7 +75,7 @@ function CheckOut(){
                 }</p>
                 <p>{new Date().toLocaleTimeString()}</p>
               </div>
-             <button >Order</button>
+             <button onClick={()=>dispatch({type:'ADD ORDERS',payload:checkOutItems})} >Order</button>
         </main>
     )
 }

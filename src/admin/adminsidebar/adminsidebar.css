@@ -1,0 +1,9 @@
+.admin-sidebar-container{
+    display: flex;
+    flex-direction: column;
+    padding: .2rem;
+    gap: 1rem;
+}
+.admin-sidebar-navlink{
+   text-decoration: none;
+}

@@ -12,6 +12,7 @@ function Navigation(){
             <NavLink to='/university' className="navlink">University </NavLink>
             <NavLink className="navlink">Travel</NavLink>
             <NavLink to='/cart' className="navlink shoppingcart"><ShoppingCart  /><span className="shoppingcart-icon">{cartItems.length}</span></NavLink>
+            <NavLink to='/order' className="navlink" >Orders</NavLink>
         </nav>
     )
 }
